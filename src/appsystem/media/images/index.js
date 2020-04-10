@@ -1,0 +1,6 @@
+export * from './Img'
+export * from './Picture'
+export * from './Figure'
+export * from './Figcaption'
+export * from './Map'
+export * from './Area'

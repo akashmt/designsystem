@@ -1,0 +1,202 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+
+import { H1, Code, TextLead, Figcaption } from '../../_comps'
+
+
+
+<Meta title="Design System|StyleComponents"/>
+
+# Style Component Example
+
+## Using base style component
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi ligula, scelerisque in nunc quis, tincidunt rhoncus nisl. Donec non gravida massa.
+
+    import styled, { css } from 'styled-components'
+  
+    export const HeadingBase = css`
+      margin: 0rem 0rem 0rem 0rem;
+    `
+
+    export const H1 = styled.h1`
+      ${HeadingBase}
+      margin: 0rem 0rem 1.5rem 0rem;
+      color: ORANGE;
+    `
+
+    export const H2 = styled.h2`
+      ${HeadingBase}
+      color: RED;
+    `
+
+    export const H3 = styled.h3`
+      ${HeadingBase}
+      color: RED;
+    `
+
+    export const H4 = styled.h4`
+      ${HeadingBase}
+      color: RED;
+    `
+
+    export const H5 = styled.h5`
+      ${HeadingBase}
+      color: RED;
+    `
+
+    export const H6 = styled.h6`
+      ${HeadingBase}
+      color: RED;
+    `
+   
+
+<Preview withToolbar>
+  <Story name="CompBaseStyle">
+    <H1>Using Base Style Component</H1> 
+  </Story>
+</Preview>
+
+
+## Using style component
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi ligula, scelerisque in nunc quis, tincidunt rhoncus nisl. Donec non gravida massa.
+
+    import React from 'react'
+    import styled, { css } from 'styled-components'
+
+    export const Code = () => {
+      return (
+        <StyledDiv>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda, eos!</p>
+        </StyledDiv>
+      )
+    }
+
+    export const DivBase = css`
+      background: BLACK;
+      color: WHITE;
+    `
+
+    const StyledDiv = styled.div`
+      ${DivBase}
+    `
+   
+
+<Preview withToolbar>
+  <Story name="StyledComp">
+    <Code>Using Base Style Component</Code> 
+  </Story>
+</Preview>
+
+
+## Using Child Props Component Style 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi ligula, scelerisque in nunc quis, tincidunt rhoncus nisl. Donec non gravida massa.
+
+    import React from 'react'
+    import styled, { css } from 'styled-components'
+
+    export const Code = ({ children }) => {
+      return (
+        <StyledDiv>
+          {children}
+        </StyledDiv>
+      )
+    }
+
+    export const DivBase = css`
+      background: BLACK;
+      color: WHITE;
+    `
+
+    const StyledDiv = styled.div`
+      ${DivBase}
+    `
+   
+
+<Preview withToolbar>
+  <Story name="CompChildProps">
+    <Code>Using child Props Style Component</Code> 
+  </Story>
+</Preview>
+
+## Using Component inheritance Style
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi ligula, scelerisque in nunc quis, tincidunt rhoncus nisl. Donec non gravida massa.
+
+    import styled, { css } from 'styled-components'
+
+    export const Text = styled.p`
+      color: green;
+      margin: 0rem 0rem 1rem 0rem;
+      &:last-of-type { margin-bottom: 0; }
+    `
+
+    export const TextLead = styled(Text)`
+      font-style: italic;
+      color: purple;
+    `
+   
+<Preview withToolbar>
+  <Story name="CompInheritance">
+    <TextLead>Using child Props Style Component</TextLead> 
+  </Story>
+</Preview>
+
+
+## Using Component Refference Pass Props
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi ligula, scelerisque in nunc quis, tincidunt rhoncus nisl. Donec non gravida massa.
+
+
+    import React from 'react'
+    import styled, { css } from 'styled-components'
+
+    export const Figcaption = ({ children, type }) => {
+      return (
+        <StyledFigcaption type={type}>
+          {children}
+        </StyledFigcaption>
+      )
+    }
+
+    export const StyledFigcaption = styled.figcaption`
+      ${props => props.type == 'cancel' && 'background-color: tomato;'}
+    `
+   
+
+<Preview withToolbar>
+  <Story name="CompRAFCpassprops">
+    <>
+      <Figcaption type='cancel'>Using Component Refference Pass Props</Figcaption> 
+      <Figcaption>Using Component Refference Pass Props</Figcaption> 
+    </>
+  </Story>
+</Preview>
+    
+
+## Using Component Base style Pass Props
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi ligula, scelerisque in nunc quis, tincidunt rhoncus nisl. Donec non gravida massa.
+
+
+    import styled, { css } from 'styled-components'
+
+    export const FigcaptionBase = css`
+      
+    `
+
+    export const Figcaption = styled.figcaption`
+      ${FigcaptionBase}
+      ${props => props.type == 'cancel' && 'background-color: green;'}
+    `
+   
+
+<Preview withToolbar>
+  <Story name="CompSCpassprops">
+    <>
+      <Figcaption type='cancel'>Hello!</Figcaption>
+    </>
+  </Story>
+</Preview>
